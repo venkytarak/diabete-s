@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="keywords" content="Site keywords here">
+		<meta name="description" content="">
+		<meta name='copyright' content=''>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Title -->
+        <title>web based diabetes prediction using machine learning</title>
+		
+		<!-- Favicon -->
+        <link rel="icon" href="static/images/favicon.png">
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+		<!-- Nice Select CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/nice-select.css')}}">
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+		<!-- icofont CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/icofont.css')}}">
+		<!-- Slicknav -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/slicknav.min.css')}}">
+		<!-- Owl Carousel CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/owl-carousel.css')}}">
+		<!-- Datepicker CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/datepicker.css')}}">
+		<!-- Animate CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}">
+		<!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/magnific-popup.css')}}">
+		
+		<!-- Medipro CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/normalize.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/responsive.css')}}">
+		
+    </head>
+    <body>
+	
+		<!-- Preloader -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+
+                <div class="indicator"> 
+                    <svg width="16px" height="12px">
+                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
+		
+		<!-- Header Area -->
+		<header class="header" >
+			
+			<!-- Header Inner -->
+			<div class="header-inner">
+				<div class="container">
+					<div class="inner">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-12">
+								<!-- Start Logo -->
+								<div class="logo">
+									<a href="/"><img src="static/images/logo.png" alt="#"></a>
+								</div>
+								<!-- End Logo -->
+								<!-- Mobile Nav -->
+								<div class="mobile-nav"></div>
+								<!-- End Mobile Nav -->
+							</div>
+							<div class="col-lg-7 col-md-9 col-12">
+								<!-- Main Menu -->
+								<div class="main-menu">
+									<nav class="navigation">
+										<ul class="nav menu">
+											<li class="active"><a href="/">Home <i class="icofont-rounded-down"></i></a>
+												
+											</li>
+											<!-- <li class=""><a href="#">Team Details<i class="icofont-rounded-down"></i></a> -->
+												
+											</li>
+											
+										</ul>
+									</nav>
+								</div>
+								<!--/ End Main Menu -->
+							</div>
+							<div class="col-lg-2 col-12">
+								<div class="get-quote">
+									<a href="/" class="btn">Book Appointment</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Header Inner -->
+		</header>
+		<!-- End Header Area -->
+		
+
+		
+
+		<!-- diabetes prediction -->
+		
+		<div class="container-fluid my-5 text-center">
+			<div class="row py-2">
+				<div class="col-md-6 offset-md-3">
+				{% if context.pred %}
+					<p class="h1 alert alert-danger shadow">&#128542; Opps! You have <b>Diabetes</b></p>
+                 <a href="/diet">   <button class="btn btn-success"> Get Diet Recomendations from Doctor</button></a>
+
+                   
+				{% else %}
+					<p class="h1 alert alert-success shadow">&#128522; Wow! You don't have <b>Diabetes</b></p>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <table class="table table-dark table-striped shadow">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Your</th>
+                                        <th scope="col">Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Number of Pregnancies</th>
+                                        <td>{{context.num_preg}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Glucose (mg/dL)</th>
+                                        <td>{{context.glucose_conc}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Blood Pressure (mmHg)</th>
+                                        <td>{{context.diastolic_bp}}</td>
+                                    <tr>
+                                        <th scope="row">Skin Thickness (mm)</th>
+                                        <td>{{context.thickness}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Insulin Level (IU/mL)</th>
+                                        <td>{{context.insulin}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Body Mass Index (kg/m²)</th>
+                                        <td>{{context.bmi}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Diabetes Pedigree Function</th>
+                                        <td>{{context.dpf}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Age</th>
+                                        <td>{{context.age}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+				{% endif %}
+				</div>
+			</div>
+			
+		</div>
+		<!-- diabetes prediction code ends  -->
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		<!-- jquery Min JS -->
+        <script src="static/js/jquery.min.js"></script>
+		<!-- jquery Migrate JS -->
+		<script src="static/js/jquery-migrate-3.0.0.js"></script>
+		<!-- jquery Ui JS -->
+		<script src="static/js/jquery-ui.min.js"></script>
+		<!-- Easing JS -->
+        <script src="static/js/easing.js"></script>
+		<!-- Color JS -->
+		<script src="static/js/colors.js"></script>
+		<!-- Popper JS -->
+		<script src="static/js/popper.min.js"></script>
+		<!-- Bootstrap Datepicker JS -->
+		<script src="static/js/bootstrap-datepicker.js"></script>
+		<!-- Jquery Nav JS -->
+        <script src="static/js/jquery.nav.js"></script>
+		<!-- Slicknav JS -->
+		<script src="static/js/slicknav.min.js"></script>
+		<!-- ScrollUp JS -->
+        <script src="static/js/jquery.scrollUp.min.js"></script>
+		<!-- Niceselect JS -->
+		<script src="static/js/niceselect.js"></script>
+		<!-- Tilt Jquery JS -->
+		<script src="static/js/tilt.jquery.min.js"></script>
+		<!-- Owl Carousel JS -->
+        <script src="static/js/owl-carousel.js"></script>
+		<!-- counterup JS -->
+		<script src="static/js/jquery.counterup.min.js"></script>
+		<!-- Steller JS -->
+		<script src="static/js/steller.js"></script>
+		<!-- Wow JS -->
+		<script src="static/js/wow.min.js"></script>
+		<!-- Magnific Popup JS -->
+		<script src="static/js/jquery.magnific-popup.min.js"></script>
+		<!-- Counter Up CDN JS -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="static/js/bootstrap.min.js"></script>
+		<!-- Main JS -->
+		<script src="static/js/main.js"></script>
+    </body>
+</html>
